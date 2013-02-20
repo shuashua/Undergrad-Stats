@@ -1,0 +1,133 @@
+Problem 3.3
+
+#a
+data = c(66, 59,70,83,82,71)
+ybar = mean(data)
+S2 = var(data)
+
+
+Problem 4.3
+
+Data = read.csv("Chap4Prob3.csv")
+
+#a
+Dia = Data$Diameter   #x
+Age = Data$Age        #y
+
+plot(Dia,Age,ylab="Diameter",main="Scatterplot of y vs. x",ylim=c(0,180),xlim=c(0,13))
+
+#b
+N = 1132
+n = 20
+
+ybar = mean(Age)
+xbar = mean(Dia)
+Bhat = ybar/xbar
+Xu = 10.3
+Yr = Bhat*Xu
+S2 = var(Age)
+ei = Age - Bhat*Dia; 
+se.2 = (1/(n-1))*sum(ei^2)
+se=sqrt(se.2) 
+
+#c
+Reg = lm(Age~Dia)
+Bo = Reg$coefficients[1]
+Ba = Reg$coefficients[2]
+
+Se2 = sum(Reg$residuals^2/(n-1))
+Se=sqrt(Se2)
+
+#d
+abline(0,Bhat,lty=1)
+abline(Bo,Ba,lty=2)
+
+legend("topleft",c("Ratio","Regression"),lty=c(1,2))
+
+
+
+Problem 4.11
+
+data = read.csv("counties.csv")
+
+#a
+Phy = data$physician
+hist(Phy)
+
+#b
+ybar = mean(Phy)
+N = 3141
+that = ybar*N
+n = 100 
+S2 = var(Phy)
+
+SEy = sqrt((1-n/N)*S2/n)
+SEt = N*SEy
+
+
+#c
+Pop = data$totpop
+plot(Pop,Phy,xlim=c(0,150000),ylim=c(0,300),xlab="County Population",
+	ylab="Number of Physicians",main = "Physicians vs. Population")
+
+ybar = mean(Phy); xbar = mean(Pop)
+B.hat = ybar/xbar
+
+abline(0,B.hat,lty=1)
+
+
+###
+Reg = lm(Phy~Pop)
+Bo = Reg$coefficients[1]
+Ba = Reg$coefficients[2]
+
+abline(Bo,Ba,lty=2)
+
+legend("topleft",c("Ratio","Regression"),lty=c(1,2))
+
+#d (Choose Regression)
+tx = 255077536
+xbaru = tx/N
+ybar.reg = Bo + Ba*xbaru
+t.hat.reg = N*ybar.reg
+se.2 = 1/(n-1)*sum(Reg$residuals^2)
+SE.t.reg = N*sqrt((1-n/N)*(se.2/n))
+CI.yreg = c(t.hat.reg - 1.96*SE.t.reg,t.hat.reg + 1.96*SE.t.reg)
+
+#e
+#ratio
+
+t.hat.yr = B.hat*tx
+
+
+
+4.36
+library(MASS)
+
+#a 
+TheMean = c(0,0)
+TheVar = matrix(c(1,.5,.5,1),nrow = 2)
+Results = t(sapply(1:500,function(i){
+Data = mvrnorm(30,mu = TheMean,Sigma = TheVar)
+y = Data[,1]
+x = Data[,2]
+Model = lm(y~x)
+ybar.reg = mean(y)+ Model$coefficients[2]*(-mean(x))
+return(c(mean(y),ybar.reg))
+}))
+hist(Results[,1],main="Histogram of ybar")
+hist(Results[,2],main="Histogram of ybar_hat_reg")
+
+#b
+TheMean = c(0,0)
+TheVar = matrix(c(1,.5,.5,1),nrow = 2)
+Results = t(sapply(1:500,function(i){
+Data = mvrnorm(60,mu = TheMean,Sigma = TheVar)
+y = Data[,1]
+x = Data[,2]
+Model = lm(y~x)
+ybar.reg = mean(y)+ Model$coefficients[2]*(-mean(x))
+return(c(mean(y),ybar.reg))
+}))
+hist(Results[,1],main="Histogram for ybar")
+hist(Results[,2],main="Histogram for ybar_hat_reg")

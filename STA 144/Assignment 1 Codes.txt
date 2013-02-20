@@ -1,0 +1,91 @@
+2.11
+
+#a
+No.Child = c(13,35,44,69,36,24,7,3,2,5,1,1)
+Age.Month = c(9:20)
+Data = rep(Age.Month,No.Child)
+hist(Data,main="Historgram of Mayr et al. Data",xlab="Age (Month)")
+
+#b
+n = 240
+Mean = mean(Data)
+Var = var(Data)
+SampleVar = (1/(n-1))*sum((Data-Mean)^2)
+
+EstVarYbar = SampleVar/n
+
+SEYbar = sqrt(EstVarYbar)
+
+# 95% Confidence Interval:
+Mean - 1.96*SEYbar
+Mean + 1.96*SEYbar
+
+#c
+e = 0.5
+n = (1.96^2)*Var/e^2
+
+
+Problem 2
+
+#a
+library(gtools)
+Data = c(15,34,35,36,11,17,36,15)
+WR = permutations(8,3,1:8,repeats.allowed=TRUE)
+WR[,1] = Data[WR[,1]]
+WR[,2] = Data[WR[,2]]
+WR[,3] = Data[WR[,3]]
+
+SampleTotal = rowSums(WR)
+table(SampleTotal)
+
+#b
+Table = as.data.frame(table(SampleTotal))
+Probability = as.data.frame(Table[,2]/512)
+DistTable = cbind(Table,Probability)
+
+names(DistTable)[names(DistTable)=="SampleTotal"]<-"Xi"
+names(DistTable)[names(DistTable)=="Table[, 2]/512"]<-"Probability"
+head(DistTable)
+
+#d
+WoR = permutations(8,3,1:8,repeats.allowed=FALSE)
+WoR[,1] = Data[WoR[,1]]
+WoR[,2] = Data[WoR[,2]]
+WoR[,3] = Data[WoR[,3]]
+
+SampleTotal_o = rowSums(WoR)
+table(SampleTotal_o)
+
+Table_o = as.data.frame(table(SampleTotal_o))
+Probability_o = as.data.frame(Table_o[,2]/336)
+DistTable_o = cbind(Table_o,Probability_o)
+
+names(DistTable_o)[names(DistTable_o)=="SampleTotal"]<-"Xi"
+names(DistTable_o)[names(DistTable_o)=="Table[, 2]/336"]<-"Probability"
+head(DistTable_o)
+
+#f
+#With Replacement:
+Mean = mean(SampleTotal)
+Var = var(SampleTotal)
+
+#Without Replacement:
+Mean_o = mean(SampleTotal_o)
+Var_o = var(SampleTotal_o)
+
+
+2.16
+#a
+Data = read.csv("golfsrs.csv")
+wkday9 = Data$wkday9
+hist(wkday9,main="Histogram for Weekday Greens Fees for Nine Holes of Golf",
+	xlab="Weekday Greens Fees for Nine Holes of Golf")
+
+#b
+Mean = mean(wkday9)
+var = var(wkday9)
+
+n = 120
+N = 14938
+VyBar = (1-n/N)*(var/n)
+SEyBar = sqrt(VyBar)

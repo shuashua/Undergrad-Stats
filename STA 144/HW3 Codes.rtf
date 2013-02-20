@@ -1,0 +1,245 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf230
+{\fonttbl\f0\fnil\fcharset0 Monaco;\f1\fnil\fcharset128 HiraKakuProN-W3;}
+{\colortbl;\red255\green255\blue255;\red62\green62\blue62;\red2\green26\blue128;\red142\green30\blue27;
+\red28\green62\blue23;\red171\green118\blue41;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\tx7280\tx7840\tx8400\tx8960\tx9520\tx10080\tx10640\tx11200\tx11760\tx12320\tx12880\tx13440\tx14000\tx14560\tx15120\tx15680\tx16240\tx16800\tx17360\tx17920\tx18480\tx19040\tx19600\tx20160\tx20720\tx21280\tx21840\tx22400\tx22960\tx23520\tx24080\tx24640\tx25200\tx25760\tx26320\tx26880\tx27440\tx28000\tx28560\tx29120\tx29680\tx30240\tx30800\tx31360\tx31920\tx32480\tx33040\tx33600\tx34160\tx34720\tx35280\tx35840\li80\fi-80\pardirnatural
+
+\f0\fs22 \cf2 ####Problem 4\
+\cf0 data \cf3 =\cf0  \cf3 read.csv(\cf4 "/Users/shuhualiang/Documents/Davis/STA 144/journal.csv"\cf3 )\cf0 \
+\
+\cf2 #b\
+\cf0 phat \cf3 =\cf0  \cf3 sum(\cf0 data\cf3 $\cf0 nonprob\cf3 )/sum(\cf0 data\cf3 $\cf0 numemp\cf3 )\cf0   \cf2 #same as ybar\
+\cf0 \
+tSum \cf3 =\cf0  \cf3 sum(\cf0 data\cf3 $\cf0 nonprob\cf3 )\cf0 \
+mSum \cf3 =\cf0  \cf3 sum(\cf0 data\cf3 $\cf0 numemp\cf3 )\cf0 \
+yrbar \cf3 =\cf0  tSum\cf3 /\cf0 mSum\
+\
+mbar \cf3 =\cf0  \cf3 mean(\cf0 data\cf3 $\cf0 numemp\cf3 )\cf0 \
+n \cf3 =\cf0  \cf5 26\cf0 \
+N \cf3 =\cf0  \cf5 1285\cf0 \
+\
+SEyrbar \cf3 =\cf0  \cf3 sqrt(((\cf5 1\cf3 -\cf0 n\cf3 /\cf0 N\cf3 )/(\cf0 n\cf3 *\cf0 mbar\cf3 ^\cf5 2\cf3 ))*(sum((\cf0 data\cf3 $\cf0 nonprob\cf3 -\cf0 yrbar\cf3 *\cf0 data\cf3 $\cf0 numemp\cf3 )^\cf5 2\cf3 )/(\cf0 n\cf3 -\cf5 1\cf3 )))\cf0 \
+\
+\
+\cf2 ####Problem 6\
+\cf0 data \cf3 =\cf0  \cf3 matrix(c(\cf5 1\cf3 ,\cf5 4\cf3 ,\cf5 0\cf3 ,\cf5 3\cf3 ,\cf5 4\cf3 ,\cf5 0\cf3 ,\cf5 5\cf3 ,\cf5 3\cf3 ,\cf5 7\cf3 ,\cf5 3\cf3 ,\cf5 4\cf3 ,\cf5 0\cf3 ,\cf5 5\cf3 ,\cf5 2\cf3 ,\cf5 1\cf3 ,\cf5 6\cf3 ,\cf5 9\cf3 ,\cf5 7\cf3 ,\cf5 5\cf3 ,\cf5 0\cf3 ,\cf5 3\cf3 ,\cf5 1\cf3 ,\cf5 7\cf3 ,\cf5 0\cf3 ,\cf5 7\cf3 ,\cf5 4\cf3 ,\cf5 2\cf3 ,\cf5 6\cf3 ,\cf5 8\cf3 ,\cf5 3\cf3 ,\cf5 1\cf3 ,\cf5 2\cf3 ,\cf5 5\cf3 ,\cf5 4\cf3 ,\cf5 9\cf3 ,\cf5 0\cf3 ),\cf0 ncol\cf3 =\cf5 12\cf3 ,\cf0 nrow\cf3 =\cf5 3\cf3 ,\cf0 byrow\cf3 =\cf6 TRUE\cf3 )\cf0 \
+\
+N \cf3 =\cf0  \cf5 580\cf0 \
+n \cf3 =\cf0  \cf5 12\cf0 \
+Mi \cf3 =\cf0  \cf5 24\cf0 \
+mi \cf3 =\cf0  \cf5 3\cf0 \
+\
+Wij \cf3 =\cf0  N\cf3 *\cf0 Mi\cf3 /(\cf0 n\cf3 *\cf0 mi\cf3 )\cf0 \
+\
+that_unb \cf3 =\cf0  Wij\cf3 *sum(\cf0 data\cf3 )\cf0 \
+\
+yi \cf3 =\cf0  \cf3 array(\cf5 0\cf3 ,\cf5 3\cf3 )\cf0 \
+\cf6 for\cf0  \cf3 (\cf0 i \cf6 in\cf0  \cf5 1\cf3 :\cf5 3\cf3 )\{\cf0 \
+	yi\cf3 [\cf0 i\cf3 ]\cf0  \cf3 =\cf0  \cf3 sum(\cf0 data\cf3 [\cf0 i\cf3 ,])/\cf5 12\cf0 \
+\cf3 \}\cf0 \
+\
+ti \cf3 =\cf0  \cf3 array(\cf5 0\cf3 ,\cf5 12\cf3 )\cf0 \
+\cf6 for\cf0  \cf3 (\cf0 i \cf6 in\cf0  \cf5 1\cf3 :\cf5 12\cf3 )\{\cf0 \
+	ti\cf3 [\cf0 i\cf3 ]\cf0  \cf3 =\cf0  \cf3 (\cf0 Mi\cf3 /\cf0 mi\cf3 )*sum(\cf0 data\cf3 [,\cf0 i\cf3 ])\cf0 \
+\cf3 \}\cf0 \
+\
+S2i \cf3 =\cf0  \cf3 array(\cf5 0\cf3 ,\cf5 3\cf3 )\cf0 \
+\cf6 for\cf0  \cf3 (\cf0 i \cf6 in\cf0  \cf5 1\cf3 :\cf5 3\cf3 )\{\cf0 \
+	S2i\cf3 [\cf0 i\cf3 ]\cf0  \cf3 =\cf0  \cf3 (\cf5 1\cf3 /\cf5 2\cf3 )*(sum((\cf0 data\cf3 [\cf0 i\cf3 ,]-\cf0 yi\cf3 [\cf0 i\cf3 ])^\cf5 2\cf3 ))\cf0 \
+\cf3 \}\cf0 \
+\
+S2t \cf3 =\cf0  \cf3 sum((\cf0 ti\cf3 -\cf0 that_unb\cf3 /\cf0 N\cf3 )^\cf5 2\cf3 )/\cf5 11\cf0 \
+\
+Vtunb \cf3 =\cf0  N\cf3 ^\cf5 2\cf3 *(\cf5 1\cf3 -\cf0 n\cf3 /\cf0 N\cf3 )*\cf0 S2t\cf3 /\cf0 n \cf3 +\cf0  \cf3 ((\cf0 N\cf3 /\cf0 n\cf3 )*sum((\cf5 1\cf3 -\cf0 mi\cf3 /\cf0 Mi\cf3 )*\cf0 Mi\cf3 ^\cf5 2\cf3 *\cf0 S2i\cf3 /\cf0 mi\cf3 ))\cf0 \
+SEtunb \cf3 =\cf0  \cf3 sqrt(\cf0 Vtunb\cf3 )\cf0 \
+\
+\cf2 # 95% CI\
+\cf0 that_unb \cf3 -\cf0  \cf5 1.96\cf3 *\cf0 SEtunb   \cf2 #Lower Bound\
+\cf0 that_unb \cf3 +\cf0  \cf5 1.96\cf3 *\cf0 SEtunb	 \cf2 #Upper Bound\
+\cf0 \
+\cf2 #SAS Output\
+\cf0 Vwrtunb \cf3 =\cf0  N\cf3 ^\cf5 2\cf3 *\cf0 S2t\cf3 /\cf0 n\
+SEsas \cf3 =\cf0  \cf3 sqrt(\cf0 Vwrtunb\cf3 )\cf0 \
+\
+\
+\cf2 ####Problem 11\
+\cf0 \
+N \cf3 =\cf0  \cf5 828\cf0 \
+n \cf3 =\cf0  \cf5 85\cf0 \
+Mi \cf3 =\cf0  \cf5 215\cf0 \
+\
+Data \cf3 =\cf0  \cf3 c(\cf5 4\cf3 ,\cf5 3\cf3 ,rep(\cf5 2\cf3 ,\cf5 4\cf3 ),rep(\cf5 1\cf3 ,\cf5 22\cf3 ),rep(\cf5 0\cf3 ,\cf5 57\cf3 ))\cf0 \
+\
+
+\f1 \'81\'94
+\f0 a\
+tunb \cf3 =\cf0  \cf3 (\cf0 N\cf3 /\cf0 n\cf3 )*sum(\cf0 Data\cf3 )\cf0 \
+errorRate \cf3 =\cf0  tunb\cf3 /(\cf0 Mi\cf3 *\cf0 N\cf3 )\cf0 \
+\
+S2t \cf3 =\cf0  \cf3 var(\cf0 Data\cf3 )\cf0 \
+\
+SEtunb \cf3 =\cf0  \cf3 (\cf5 1\cf3 /\cf0 Mi\cf3 )*sqrt((\cf5 1\cf3 -\cf0 n\cf3 /\cf0 N\cf3 )*\cf0 S2t\cf3 /\cf0 n\cf3 )\cf0 \
+\
+
+\f1 \'81\'94
+\f0 b\
+that \cf3 =\cf0  \cf3 (\cf0 N\cf3 /\cf0 n\cf3 )*sum(\cf0 Data\cf3 )\cf0 \
+Vthat \cf3 =\cf0  \cf3 (\cf0 N\cf3 ^\cf5 2\cf3 )*(\cf5 1\cf3 -\cf0 n\cf3 /\cf0 N\cf3 )*\cf0 S2t\cf3 /\cf0 n\
+SEthat \cf3 =\cf0  \cf3 sqrt(\cf0 Vthat\cf3 )\cf0 \
+\
+\cf2 #c\
+\cf0 N \cf3 =\cf0  \cf5 178020\cf0 \
+n \cf3 =\cf0  \cf5 18275\cf0 \
+\
+t_hat_unb \cf3 =\cf0  N\cf3 /\cf0 n\cf3 *sum(\cf0 Data\cf3 )\cf0 \
+ybar \cf3 =\cf0  t_hat_unb\cf3 /\cf0 N\
+\
+VpSRS \cf3 =\cf0  \cf3 ((\cf0 N\cf3 -\cf0 n\cf3 )/(\cf0 N\cf3 -\cf5 1\cf3 ))*\cf0 ybar\cf3 *(\cf5 1\cf3 -\cf0 ybar\cf3 )/\cf0 n\
+\
+\cf2 ####14\
+\cf0 Data \cf3 =\cf0  \cf3 as.data.frame(matrix(c(\cf5 1471\cf3 ,\cf5 792\cf3 ,\cf5 25\cf3 ,\cf5 10\cf3 ,\cf5 890\cf3 ,\cf5 447\cf3 ,\cf5 15\cf3 ,\cf5 3\cf3 ,\cf5 1021\cf3 ,\cf5 511\cf3 ,\cf5 20\cf3 ,\cf5 6\cf3 ,\cf5 1587\cf3 ,\cf5 800\cf3 ,\cf5 40\cf3 ,\cf5 27\cf3 ),\cf0 nrow\cf3 =\cf5 4\cf3 ,\cf0 ncol\cf3 =\cf5 4\cf3 ,\cf0 byrow\cf3 =\cf6 TRUE\cf3 ))\cf0 \
+\
+\cf3 names(\cf0 Data\cf3 )[names(\cf0 Data\cf3 )==\cf4 "V1"\cf3 ]=\cf4 "#Stud"\cf0 \
+\cf3 names(\cf0 Data\cf3 )[names(\cf0 Data\cf3 )==\cf4 "V2"\cf3 ]=\cf4 "Mi"\cf0 \
+\cf3 names(\cf0 Data\cf3 )[names(\cf0 Data\cf3 )==\cf4 "V3"\cf3 ]=\cf4 "mi"\cf0 \
+\cf3 names(\cf0 Data\cf3 )[names(\cf0 Data\cf3 )==\cf4 "V4"\cf3 ]=\cf4 "#Smoke"\cf0 \
+\
+N \cf3 =\cf0  \cf5 29\cf0 \
+n \cf3 =\cf0  \cf5 4\cf0 \
+\
+\cf2 #a\
+\cf0 yi_bar \cf3 =\cf0  Data\cf3 [\cf4 "#Smoke"\cf3 ]/\cf0 Data\cf3 [\cf4 "mi"\cf3 ]\cf0 \
+Si2 \cf3 =\cf0  \cf3 (\cf0 yi_bar\cf3 )*(\cf5 1\cf3 -\cf0 yi_bar\cf3 )/\cf0 Data\cf3 [\cf4 'mi'\cf3 ]\cf0 \
+\
+Ybh_r \cf3 =\cf0  \cf3 sum(\cf0 Data\cf3 [\cf4 'Mi'\cf3 ]*\cf0 yi_bar\cf3 )/sum(\cf0 Data\cf3 [\cf4 'Mi'\cf3 ])\cf0 \
+\
+Sr2 \cf3 =\cf0  \cf3 sum((\cf0 Data\cf3 [\cf4 'Mi'\cf3 ]*\cf0 yi_bar\cf3 -\cf0 Data\cf3 [\cf4 'Mi'\cf3 ]*\cf0 Ybh_r\cf3 )^\cf5 2\cf3 )/(\cf0 n\cf3 -\cf5 1\cf3 )\cf0 \
+\
+VYbh_r \cf3 =\cf0  \cf3 (\cf5 1\cf3 /mean(\cf0 Data\cf3 [\cf4 'Mi'\cf3 ])^\cf5 2\cf3 )*(\cf5 1\cf3 -\cf0 n\cf3 /\cf0 N\cf3 )*\cf0 Sr2\cf3 /\cf0 n \cf3 +\cf0  \cf3 (\cf5 1\cf3 /(\cf0 n\cf3 *\cf0 N\cf3 *mean(\cf0 Data\cf3 [\cf4 'Mi'\cf3 ])^\cf5 2\cf3 ))*sum(\cf0 Data\cf3 [\cf4 'Mi'\cf3 ]^\cf5 2\cf3 *(\cf5 1\cf3 -\cf0 Data\cf3 [\cf4 'mi'\cf3 ]/\cf0 Data\cf3 [\cf4 'Mi'\cf3 ])*\cf0 Si2\cf3 /\cf0 Data\cf3 [\cf4 'mi'\cf3 ])\cf0 \
+\
+SEYbh_r \cf3 =\cf0  \cf3 sqrt(\cf0 VYbh_r\cf3 )\cf0 \
+	\cf2 # 95% CI\
+\cf0 Ybh_r \cf3 -\cf0  \cf5 1.96\cf3 *\cf0 SEYbh_r\
+Ybh_r \cf3 +\cf0  \cf5 1.96\cf3 *\cf0 SEYbh_r\
+\
+\cf2 #b\
+\cf0 ti_hat \cf3 =\cf0  Data\cf3 [\cf4 'Mi'\cf3 ]*\cf0 yi_bar\
+t_hat_unb \cf3 =\cf0  \cf3 (\cf0 N\cf3 /\cf0 n\cf3 )*sum(\cf0 ti_hat\cf3 )\cf0 \
+\
+St2 \cf3 =\cf0  \cf3 sum((\cf0 ti_hat\cf3 -\cf0 t_hat_unb\cf3 /\cf0 N\cf3 )^\cf5 2\cf3 )/(\cf0 n\cf3 -\cf5 1\cf3 )\cf0 \
+\
+Vthat_unb \cf3 =\cf0  \cf3 (\cf0 N\cf3 ^\cf5 2\cf3 )*(\cf5 1\cf3 -\cf0 n\cf3 /\cf0 N\cf3 )*\cf0 St2\cf3 /\cf0 n \cf3 +\cf0  \cf3 (\cf0 N\cf3 /\cf0 n\cf3 )*sum(\cf0 Data\cf3 [\cf4 'Mi'\cf3 ]^\cf5 2\cf3 *\cf0 Si2\cf3 /\cf0 Data\cf3 [\cf4 'mi'\cf3 ]*(\cf5 1\cf3 -\cf0 mi\cf3 /\cf0 Mi\cf3 ))\cf0 \
+\
+SEthat_unb \cf3 =\cf0  \cf3 sqrt(\cf0 Vthat_unb\cf3 )\cf0 \
+	\cf2 #95% CI\
+\cf0 t_hat_unb \cf3 -\cf0  \cf5 1.96\cf3 *\cf0 SEthat_unb\
+t_hat_unb \cf3 +\cf0  \cf5 1.96\cf3 *\cf0 SEthat_unb\
+\
+\cf2 #c\
+\cf0 \
+M \cf3 =\cf0  \cf3 mean(\cf0 Data\cf3 $\cf0 Mi\cf3 )\cf0 \
+m \cf3 =\cf0  \cf3 mean(\cf0 Data\cf3 $\cf0 mi\cf3 )\cf0 \
+N \cf3 =\cf0  \cf5 35\cf0 \
+\
+MSW_hat \cf3 =\cf0  \cf3 sum((\cf0 Data\cf3 $\cf0 mi\cf3 -\cf5 1\cf3 )*\cf0 Si2\cf3 )/(\cf0 n\cf3 *(\cf0 m\cf3 -\cf5 1\cf3 ))\cf0 \
+MSB_hat \cf3 =\cf0  \cf3 sum((\cf0 Data\cf3 $\cf0 mi\cf3 )*(\cf0 yi_bar\cf3 -\cf0 Ybh_r\cf3 )^\cf5 2\cf3 )/(\cf0 n\cf3 -\cf5 1\cf3 )\cf0 \
+\
+S2_hat \cf3 =\cf0  \cf3 ((\cf0 N\cf3 -\cf5 1\cf3 )*\cf0 MSB_hat \cf3 +\cf0  N\cf3 *(\cf0 M\cf3 -\cf5 1\cf3 )*\cf0 MSW_hat\cf3 )/(\cf0 N\cf3 *(\cf0 M\cf3 -\cf5 1\cf3 ))\cf0 \
+\
+C \cf3 =\cf0  \cf5 300\cf0 \
+c1 \cf3 =\cf0  \cf5 50\cf0 \
+c2 \cf3 =\cf0  \cf5 0.5\cf0 \
+\
+Ra2 \cf3 =\cf0  \cf5 1\cf0  \cf3 -\cf0  MSW_hat\cf3 /\cf0 S2_hat\
+\
+m_opt \cf3 =\cf0  \cf3 sqrt(\cf0 c1\cf3 *\cf0 M\cf3 *(\cf0 N\cf3 -\cf5 1\cf3 )*(\cf5 1\cf3 -\cf0 Ra2\cf3 )/(\cf0 c2\cf3 *(\cf0 N\cf3 *\cf0 M\cf3 -\cf5 1\cf3 )*\cf0 Ra2\cf3 ))\cf0 \
+n_opt \cf3 =\cf0  C\cf3 /(\cf0 c1\cf3 +\cf0 c2\cf3 *\cf0 m_opt\cf3 )\cf0 \
+\
+\cf2 ##### 16\
+\cf0 \
+N\cf3 =\cf5 46\cf0 \
+n\cf3 =\cf5 10\cf0 \
+\
+\cf2 #a\
+\cf0 Data \cf3 =\cf0  \cf3 read.csv(\cf4 "/Users/shuhualiang/Documents/Davis/STA 144/measles.csv"\cf3 )\cf0 \
+\
+Ret \cf3 =\cf0  Data\cf3 [which(\cf0 Data\cf3 $\cf0 returnf \cf3 ==\cf0  \cf5 1\cf3 ),]\cf0 \
+NoRet \cf3 =\cf0  Data\cf3 [which(\cf0 Data\cf3 $\cf0 returnf \cf3 !=\cf0  \cf5 1\cf3 ),]\cf0 \
+\
+P \cf3 =\cf0  \cf3 array(\cf5 0\cf3 ,\cf5 10\cf3 )\cf0 \
+\cf6 for\cf0  \cf3 (\cf0 i \cf6 in\cf0  \cf5 1\cf3 :\cf5 10\cf3 )\{\cf0 \
+	P\cf3 [\cf0 i\cf3 ]\cf0  \cf3 =\cf0  \cf3 length(\cf0 Ret\cf3 [which(\cf0 Ret\cf3 $\cf0 school \cf3 ==\cf0  i\cf3 ),]$\cf0 returnf\cf3 )/length(\cf0 Data\cf3 [which(\cf0 Data\cf3 $\cf0 school \cf3 ==\cf0  i\cf3 ),]$\cf0 returnf\cf3 )\cf0 \
+\cf3 \}\cf0 \
+\
+\
+\cf2 #b\
+\cf0 New \cf3 <-\cf0  Data\cf3 [which(\cf0 Data\cf3 $\cf0 returnf \cf3 !=\cf0  \cf5 9\cf3 ),]\cf0 \
+\
+Sums \cf3 =\cf0  \cf3 aggregate(\cf0 New\cf3 [,\cf5 1\cf3 :\cf5 11\cf3 ],\cf0 by \cf3 =\cf0  \cf3 list(\cf0 New\cf3 $\cf0 school\cf3 ),\cf0 sum\cf3 )\cf0 \
+\
+Mi \cf3 =\cf0  \cf3 unique(\cf0 New\cf3 $\cf0 Mitotal\cf3 )\cf0 \
+\
+mi \cf3 =\cf0  \cf3 array(\cf5 0\cf3 ,\cf5 10\cf3 )\cf0 \
+\cf6 for\cf0  \cf3 (\cf0 i \cf6 in\cf0  \cf5 1\cf3 :\cf5 10\cf3 )\{\cf0 \
+	mi\cf3 [\cf0 i\cf3 ]\cf0  \cf3 =\cf0  \cf3 length(\cf0 New\cf3 [which(\cf0 New\cf3 $\cf0 school \cf3 ==\cf0  i\cf3 ),]$\cf0 returnf\cf3 )\cf0 \
+\cf3 \}\cf0 \
+\
+\
+\
+\
+w \cf3 =\cf0  \cf3 array(\cf5 0\cf3 ,\cf5 10\cf3 )\cf0 \
+\cf6 for\cf0  \cf3 (\cf0 i \cf6 in\cf0  \cf5 1\cf3 :\cf5 10\cf3 )\{\cf0 \
+	w\cf3 [\cf0 i\cf3 ]\cf0  \cf3 =\cf0  \cf3 (\cf0 N\cf3 *\cf0 Mi\cf3 [\cf0 i\cf3 ])/(\cf0 n\cf3 *\cf0 mi\cf3 [\cf0 i\cf3 ])\cf0 \
+\cf3 \}\cf0 \
+\
+
+\f1 \'81\'94
+\f0 c\
+t_hat_unb \cf3 =\cf0  \cf3 sum(\cf0 w\cf3 *\cf0 Sums\cf3 $\cf0 returnf\cf3 )\cf0 \
+ybh_r \cf3 =\cf0  n\cf3 /\cf0 N\cf3 *\cf0 t_hat_unb\cf3 /sum(\cf0 Mi\cf3 )\cf0 \
+\
+ti_hat \cf3 =\cf0  \cf3 array(\cf5 0\cf3 ,\cf5 10\cf3 )\cf0 \
+\cf6 for\cf3 (\cf0 i \cf6 in\cf0  \cf5 1\cf3 :\cf5 10\cf3 )\{\cf0 \
+	ti_hat\cf3 [\cf0 i\cf3 ]\cf0  \cf3 =\cf0  Sums\cf3 $\cf0 returnf\cf3 [\cf0 i\cf3 ]*\cf0 Mi\cf3 [\cf0 i\cf3 ]/\cf0 mi\cf3 [\cf0 i\cf3 ]\cf0 \
+\cf3 \}\cf0 \
+\
+Mbar \cf3 =\cf0  \cf3 mean(\cf0 Mi\cf3 )\cf0 \
+\
+yi_bar \cf3 =\cf0  ti_hat\cf3 /\cf0 Mi\
+\
+Sr2 \cf3 =\cf0  \cf3 sum((\cf0 Mi\cf3 *\cf0 yi_bar \cf3 -\cf0  Mi\cf3 *\cf0 ybh_r\cf3 )^\cf5 2\cf3 )/(\cf0 n\cf3 -\cf5 1\cf3 )\cf0 \
+\
+Si2 \cf3 =\cf0  \cf3 array(\cf5 0\cf3 ,\cf5 10\cf3 )\cf0 \
+\cf6 for\cf0  \cf3 (\cf0 i \cf6 in\cf0  \cf5 1\cf3 :\cf5 10\cf3 )\{\cf0 \
+	Si2\cf3 [\cf0 i\cf3 ]\cf0  \cf3 =\cf0  \cf3 sum((\cf0 New\cf3 [which(\cf0 New\cf3 $\cf0 school \cf3 ==\cf0  i\cf3 ),]$\cf0 returnf\cf3 -mean(\cf0 New\cf3 [which(\cf0 New\cf3 $\cf0 school \cf3 ==\cf0  	i\cf3 ),]$\cf0 returnf\cf3 ))^\cf5 2\cf3 )/(\cf0 mi\cf3 [\cf0 i\cf3 ]\cf5 -1\cf3 )\cf0 \
+\cf3 \}\cf0 \
+\
+Vyhb_r \cf3 =\cf0  \cf3 (\cf5 1\cf3 -\cf0 n\cf3 /\cf0 N\cf3 )*\cf0 Sr2\cf3 /\cf0 n\cf3 /\cf0 Mbar\cf3 ^\cf5 2\cf0  \cf3 +\cf0  \cf3 sum(\cf0 Mi\cf3 ^\cf5 2\cf3 *(\cf5 1\cf3 -\cf0 mi\cf3 /\cf0 Mi\cf3 )*\cf0 Si2\cf3 /\cf0 mi\cf3 )/(\cf0 n\cf3 *\cf0 N\cf3 *\cf0 Mbar\cf3 ^\cf5 2\cf3 )\cf0 \
+SEybh_r \cf3 =\cf0  \cf3 sqrt(\cf0 Vyhb_r\cf3 )\cf0 \
+\
+\cf2 # 95% CI\
+\cf0 ybh_r \cf3 -\cf0  \cf5 1.96\cf3 *\cf0 SEybh_r\
+ybh_r \cf3 +\cf0  \cf5 1.96\cf3 *\cf0 SEybh_r\
+\
+\cf2 #d (SRS)\
+\cf0 \
+N \cf3 =\cf0  \cf5 9962\cf0 \
+n \cf3 =\cf0  \cf5 281\cf0 \
+\
+S2 \cf3 =\cf0  \cf3 var(\cf0 New\cf3 $\cf0 returnf\cf3 )\cf0 \
+Vy_hat \cf3 =\cf0  \cf3 (\cf5 1\cf3 -\cf0 n\cf3 /\cf0 N\cf3 )*\cf0 S2\cf3 /\cf0 n\
+\
+VarRatio \cf3 =\cf0  Vyhb_r\cf3 /\cf0 Vy_hat\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+}
